@@ -11,13 +11,13 @@ export class AuthController extends BaseController {
 
   register = this.wrap(async (req: Request, res: Response<ApiResponse<UserResponseDto>>) => {
     const dto: CreateUserDto = req.body;
-    const { token, user } = await this.authService.register(dto); // ← повертаємо і токен, і юзера
+    const { token, user } = await this.authService.register(dto);
 
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 днів
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     this.success(res, user, 'User registered successfully', 201);

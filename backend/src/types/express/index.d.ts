@@ -6,8 +6,15 @@ export interface UserPayload {
   role: UserRole;
 }
 
+
 declare global {
   namespace Express {
+    interface UserPayload {
+      id: number;
+      email: string;
+      role: UserRole;
+    }
+
     interface Request {
       user: UserPayload;
     }
