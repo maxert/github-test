@@ -15,6 +15,7 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
     req.user = payload;
     next();
   } catch {
-    res.status(401).json({ message: 'Unauthorized' + token });
+    res.status(401).json({ message: 'Unauthorized'});
+
   }
 }
